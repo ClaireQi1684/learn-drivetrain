@@ -17,9 +17,9 @@ import frc.robot.Constants.DriveConstants;
 
 public class Drivetrain extends SubsystemBase {
   private TalonFX m_rightPrimary = new TalonFX(DriveConstants.kRightPrimaryID);
-  private CoreTalonFX m_rightSecondary = new CoreTalonFX(DriveConstants.kRightSecondaryID);
+  private TalonFX m_rightSecondary = new TalonFX(DriveConstants.kRightSecondaryID);
   private TalonFX m_leftPrimary = new TalonFX(DriveConstants.kLeftPrimaryID);
-  private CoreTalonFX m_leftSecondary = new CoreTalonFX(DriveConstants.kLeftSecondaryID);
+  private TalonFX m_leftSecondary = new TalonFX(DriveConstants.kLeftSecondaryID);
   private Follower m_leftFollower = new Follower(DriveConstants.kLeftPrimaryID, DriveConstants.kLeftOpposeMasterDirection);
   private Follower m_rightFollower = new Follower(DriveConstants.kRightPrimaryID, DriveConstants.kRightOpposeMasterDirection);
   /** Creates a new Drivetrain. */
@@ -38,9 +38,9 @@ public class Drivetrain extends SubsystemBase {
 
   public void setIdleMode(NeutralModeValue idleModeValue){
     m_leftPrimary.setNeutralMode(idleModeValue);
-    // m_leftSecondary.setNeutralMode(idleModeValue);
+    m_leftSecondary.setNeutralMode(idleModeValue);
     m_rightPrimary.setNeutralMode(idleModeValue);
-    // m_rightSecondary.setControl(idleModeValue);
+    m_rightSecondary.setNeutralMode(idleModeValue);
   }
 
   @Override
