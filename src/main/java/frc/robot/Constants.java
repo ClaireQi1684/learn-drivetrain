@@ -21,5 +21,11 @@ public final class Constants {
     
     public static final boolean kLeftOpposeMasterDirection = true;
     public static final boolean kRightOpposeMasterDirection = true;
+
+    public static final int kLeftStickY = 1;
+    public static final int kRightStickX = 4;
+
+    public static final double kTurnRateLimiter = 0.7;
+    public static final double kSpeedRateLimiter = 0.7;
   }
 }
