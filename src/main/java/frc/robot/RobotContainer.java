@@ -5,8 +5,10 @@
 package frc.robot;
 
 import edu.wpi.first.wpilibj.Joystick;
+import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj2.command.Command;
 import frc.robot.commands.ArcadeDrive;
+import frc.robot.commands.MoveForTime;
 import frc.robot.subsystems.Drivetrain;
 
 /**
@@ -20,10 +22,14 @@ public class RobotContainer {
     private static final int kJoystickPort = 0;
   }
 
+  // The robot's subsystems and commands are defined here... 
   private Drivetrain m_drivetrain = new Drivetrain();
   private Joystick m_joystick = new Joystick(Config.kJoystickPort);
   private ArcadeDrive m_arcadeDrive = new ArcadeDrive(m_joystick, m_drivetrain);
-  // The robot's subsystems and commands are defined here...
+
+  private double m_speed = 0; //change this value later
+  private double m_amountOfTime = 0; //change this value later
+  private MoveForTime m_moveForTime = new MoveForTime(m_drivetrain, m_speed, m_amountOfTime);
   /** The container for the robot. Contains subsystems, OI devices, and commands. */
   public RobotContainer() {
     // Configure the trigger bindings
@@ -53,7 +59,7 @@ public class RobotContainer {
    */
   public Command getAutonomousCommand() {
     // An example command will be run in autonomous
-    return null;
+    return m_moveForTime;
   }
   public Command getTeleopCommand() {
     m_drivetrain.setDefaultCommand(m_arcadeDrive);
