@@ -26,7 +26,7 @@ public class RobotContainer {
   private Joystick m_joystick = new Joystick(Config.kJoystickPort);
   private ArcadeDrive m_arcadeDrive = new ArcadeDrive(m_joystick, m_drivetrain);
 
-  private double m_speed = 0; //change this value later
+  private double m_speed = 0; //change this value later 
   private double m_amountOfTime = 0; //change this value later
   private MoveForTime m_moveForTime = new MoveForTime(m_drivetrain, m_speed, m_amountOfTime);
   /** The container for the robot. Contains subsystems, OI devices, and commands. */
