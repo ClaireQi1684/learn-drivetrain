@@ -8,7 +8,6 @@ import com.ctre.phoenix6.signals.NeutralModeValue;
 
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj2.command.Command;
-import frc.robot.Constants.DriveConstants;
 import frc.robot.subsystems.Drivetrain;
 
 public class ArcadeDrive extends Command {
@@ -25,14 +24,15 @@ public class ArcadeDrive extends Command {
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
-    m_drivetrain.setIdleMode(NeutralModeValue.Coast);
+    m_drivetrain.setRightSpeed(0);
+    m_drivetrain.setLeftSpeed(0);
   }
 
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    double turn = m_joystick.getRawAxis(DriveConstants.kLeftStickY)*DriveConstants.kTurnRateLimiter;
-    double speed = m_joystick.getRawAxis(DriveConstants.kRightStickX)*DriveConstants.kSpeedRateLimiter;
+    double turn = m_joystick.getRawAxis(1)*0.7; //axis 1 is y direction for left stick, change speed limiter later
+    double speed = m_joystick.getRawAxis(4)*0.7; //axis 4 is y direction for right stick, change speed limiter later
     
     double left = speed + turn;
     double right = speed - turn;
